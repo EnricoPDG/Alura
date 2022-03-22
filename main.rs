@@ -1,5 +1,5 @@
 const PI:f32 = 3.14;
-static mut VARIAVEL_GLOBAL :u8 = 1;
+static mut VARIAVEL_GLOBAL:u8 = 1;
 
 fn soma(a:i32, b:i32) -> i32 {
 	println!("{} + {} = {}", a, b, a + b);
@@ -46,10 +46,11 @@ fn condicionais() {
 	let idade: u8 = 20;
 	let responsavel_autorizou = true;
 	let eh_maior = idade >= 18;
+	let eh_maior_16 = idade >= 16;
 
 	if eh_maior {
 		println!("Pode entrar na balada");
-	} else if idade >= 16 && responsavel_autorizou {
+	} else if eh_maior_16 && responsavel_autorizou {
 		println!("Pode entrar com assinatura do resposável.")
 	} else {
 		println!("Não pode entrar na balada")
@@ -98,9 +99,21 @@ fn repeticoes() {
 	}
 }
 
+fn ownership() {
+	let uma_string = String::from("Enrico");
+	rouba(uma_string);
+
+	println!("{}", uma_string);
+}
+
+fn rouba(string: String) {
+	println!("{}", string);
+}
+
 fn main() {
 	escopo();
 	sombra();
 	repeticoes();
 	condicionais();
+	ownership();
 }
